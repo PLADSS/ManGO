@@ -1,7 +1,9 @@
 package com.example.mango;
 
 
-import android.Manifest;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -9,20 +11,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
-
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import android.Manifest;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AddActivity extends AppCompatActivity {
     EditText title_input, author_input, pages_input;
     Button add_button, select_pdf_button;
-    FloatingActionButton back_arrow_button;
+    ImageButton home_button,settings_button;
     Uri pdfUri;
 
     @Override
@@ -35,11 +35,19 @@ public class AddActivity extends AppCompatActivity {
         pages_input = findViewById(R.id.pages_input);
         add_button = findViewById(R.id.add_button);
         select_pdf_button = findViewById(R.id.select_pdf_button);
-        back_arrow_button =findViewById(R.id.back_arrow_button);
-        back_arrow_button.setOnClickListener(v -> {
+
+        //menu butonları
+        home_button =findViewById(R.id.home_button);
+        home_button.setOnClickListener(v -> {
             Intent intent = new Intent(AddActivity.this, MainActivity.class);
-            startActivity(intent);
-        });
+            startActivity(intent);});
+
+        settings_button =findViewById(R.id.settings_button);
+        settings_button.setOnClickListener(v -> {
+            Intent intent = new Intent(AddActivity.this, SettingsActivity.class);
+            startActivity(intent);});
+
+
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="gray">	#afcecc</color>
+    <color name="white">#CECACA</color>
+    <color name="white_alpha">#99FFFFFF</color>
+    <color name="gray">#1F4968</color>
+    <color name="gray_selected">#24577C</color>
+    <color name="gray_alpha">#991F4968</color>
+    <color name="dark_gray">#0E202D</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
 </resources>

@@ -13,22 +13,11 @@
         android:layout_height="0dp"
         android:paddingTop="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/add_button"
+        app:layout_constraintBottom_toTopOf="@+id/alt_menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="0dp" /> <!-- Set margin to 0 to move it higher -->
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/baseline_add_24" />
 
     <ImageView
         android:id="@+id/empty_imageView"
@@ -54,5 +43,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/empty_imageView" />
+
+    <LinearLayout
+        android:id="@+id/alt_menu"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@color/gray"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/gray_selected"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_home" />
+
+        <ImageButton
+            android:id="@+id/add_page_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/gray"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_add" />
+
+        <ImageButton
+            android:id="@+id/settings_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/gray"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_settings" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

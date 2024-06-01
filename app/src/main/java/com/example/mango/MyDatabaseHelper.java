@@ -3,14 +3,13 @@ package com.example.mango;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
+import android.util.Log;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
@@ -30,6 +29,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        createTable(db);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+
+    void createTable(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME +
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_TITLE + " TEXT, " +
@@ -38,12 +47,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_PDF + " TEXT);";
         db.execSQL(query);
         Log.d("DB Schema", "Database table created: " + query);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);
     }
 
     long addBook(String title, String author, int pages, String pdfUri) {
@@ -103,10 +106,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-
     void deleteAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME);
-        Log.d("DB Delete", "All data deleted from table: " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        createTable(db);
+        Log.d("DB Delete", "All data deleted and table reset: " + TABLE_NAME);
     }
 }

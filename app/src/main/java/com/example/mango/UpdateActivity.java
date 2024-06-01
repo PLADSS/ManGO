@@ -1,5 +1,10 @@
 package com.example.mango;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,11 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class UpdateActivity extends AppCompatActivity {
@@ -20,7 +20,7 @@ public class UpdateActivity extends AppCompatActivity {
     Button update_button, delete_button, select_pdf_button;
     FloatingActionButton back_arrow_button;
     String id, title, author, pages, pdfUri;
-    MyDatabaseHelper myDB;
+    com.example.mango.MyDatabaseHelper myDB;
     Uri newPdfUri;
 
     @Override
@@ -36,11 +36,11 @@ public class UpdateActivity extends AppCompatActivity {
         select_pdf_button = findViewById(R.id.select_pdf_button_update);
         back_arrow_button =findViewById(R.id.back_arrow_button);
         back_arrow_button.setOnClickListener(v -> {
-            Intent intent = new Intent(UpdateActivity.this, MainActivity.class);
+            Intent intent = new Intent(UpdateActivity.this, com.example.mango.MainActivity.class);
             startActivity(intent);
         });
 
-        myDB = new MyDatabaseHelper(UpdateActivity.this);
+        myDB = new com.example.mango.MyDatabaseHelper(UpdateActivity.this);
 
         getAndSetIntentData();
 
@@ -92,7 +92,7 @@ public class UpdateActivity extends AppCompatActivity {
         String finalPdfUri = (newPdfUri != null) ? newPdfUri.toString() : pdfUri;
 
         myDB.updateData(id, title, author, pages, finalPdfUri);
-        Intent intent = new Intent(UpdateActivity.this, MainActivity.class);
+        Intent intent = new Intent(UpdateActivity.this, com.example.mango.MainActivity.class);
         startActivity(intent);
         finish();
     }
@@ -105,7 +105,7 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 myDB.deleteOneRow(id);
-                Intent intent = new Intent(UpdateActivity.this, MainActivity.class);
+                Intent intent = new Intent(UpdateActivity.this, com.example.mango.MainActivity.class);
                 startActivity(intent);
                 finish();
             }

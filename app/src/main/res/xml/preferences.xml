@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <!-- Tema Değiştirme -->
+    <SwitchPreferenceCompat
+        android:key="dark_mode_preference"
+        android:title="Karanlık Mod"
+        android:summary="Karanlık modunu etkinleştirin"
+        android:defaultValue="false" />
+
+    <!-- Bildirim Ayarları -->
+    <PreferenceCategory android:title="Bildirim Ayarları">
+        <SwitchPreferenceCompat
+            android:key="notifications_new_message"
+            android:title="Yeni Mesaj Bildirimleri"
+            android:summary="Yeni mesajlar için bildirim alın"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+
+
+
+</PreferenceScreen>

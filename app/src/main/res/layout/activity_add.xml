@@ -49,6 +49,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corners"
         android:text="PDF Seç"
         app:layout_constraintEnd_toEndOf="@+id/pages_input"
         app:layout_constraintTop_toBottomOf="@+id/pages_input" />
@@ -58,20 +60,52 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="12dp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_corners"
         android:text="Ekle"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/select_pdf_button"
         app:layout_constraintTop_toBottomOf="@+id/select_pdf_button" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/back_arrow_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
+    <LinearLayout
+        android:id="@+id/alt_menu"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@color/gray"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/baseline_arrow_back_24" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/gray"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_home" />
+
+        <ImageButton
+            android:id="@+id/add_page_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/gray_selected"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_add" />
+
+        <ImageButton
+            android:id="@+id/settings_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/gray"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_settings" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
